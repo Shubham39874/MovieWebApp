@@ -8,6 +8,7 @@ app.use('/public', express.static('public'));
 app.get("/", (req, res)=>{
     res.render("Home");
 });
+const PORT= process.env.PORT || 3000;
 app.get("/result", (req, res)=>{
     const query = req.query.search;
     const url = "http://www.omdbapi.com/?apikey=3e77d992&s=" + query;
@@ -45,6 +46,6 @@ app.get("/result/:id", (req, res)=>{
 app.get("*", (req, res)=>{
     res.send("Some Error");
 });
-app.listen(process.env.PORT, function(){
-    console.log(`Server has started at port ${process.env.PORT}`);
+app.listen(PORT, function(){
+    console.log(`Server has started at port ${PORT}`);
 });
